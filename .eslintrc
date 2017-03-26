@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "quotes": [2, "single"],
+    "linebreak-style": ["error", "windows"],
+    "no-param-reassign": ["error", { "props": false }],
+    "eol-last": ["error", "never"],
+    "indent": ["error", "tab"],
+    "no-console": 0,
+    "no-tabs": "off"
+  },
+  "extends": "airbnb/base"
+}
