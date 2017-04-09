@@ -15,7 +15,17 @@ const router = Router();
  * @apiSuccess {String} firstname Firstname of the User.
  * @apiSuccess {String} lastname  Lastname of the User.
  */
-router.post('/register', (ctx) => {
+router.post('/user/register', (ctx) => {
+	let username = ctx.request.body.username;
+	let password = ctx.request.body.password;
+	let regTime = +new Date();
+	let loginTime = +new Date();
+	
+	// token
+	// 区别手机号和邮箱注册
+	// 手机号是否存在
+	// 手机号是否正确
+	// 密码是否符合规则
 	ctx.body = ctx.request.body;
 });
 
