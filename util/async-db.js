@@ -4,11 +4,11 @@
 const mysql = require('mysql')
 const config = require('../config/config')
 
-const pool = mysql.createConnection({
-	host: config.hostName,   // 数据库地址
-	user: config.user,    // 数据库用户
-	password: config.password,   // 数据库密码
-	database: config.database,  // 选中数据库
+const pool = mysql.createPool({
+	host: config.database.HOST,   // 数据库地址
+	user: config.database.USERNAME,    // 数据库用户
+	password: config.database.PASSWORD,   // 数据库密码
+	database: config.database.DATABASE,  // 选中数据库
 })
 
 const query = (sql, values) => {
