@@ -1,18 +1,22 @@
-const fs = require('fs');
-const path = require('path');
+/**
+ * Created by h9zhou on 2017/3/21.
+ */
 const Router = require('koa-router');
+const user = require('../controllers/user')
 
-const basename = path.basename(module.filename);
 const router = Router();
 
-fs
-	.readdirSync(__dirname)
-	.filter((file) => {
-		return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-	})
-	.forEach((file) => {
-		const route = require(path.join(__dirname, file));
-		router.use(route.routes(), route.allowedMethods());
-	})
+/**
+ * @api {get} /user/:id Request User information
+ * @apiName GetUser
+ * @apiGroup User
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {String} firstname Firstname of the User.
+ * @apiSuccess {String} lastname  Lastname of the User.
+ */
+router.post('/user/register', user.signup);
 
+// for require auto in index.js
 module.exports = router;

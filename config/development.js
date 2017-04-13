@@ -1,11 +1,12 @@
 const port = Number.parseInt(process.env.PORT, 10) || 5000
 module.exports = {
 	port,
-	database: {
-		HOST: 'localhost',
-		DATABASE: 'miaow',
-		USERNAME: 'root',
-		PASSWORD: '',
+	mysql: {
+		host: 'localhost',
+		database: 'miaow',
+		user: 'root',
+		password: '',
+		port: 3306,
 	},
 };
 

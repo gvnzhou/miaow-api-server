@@ -1,22 +1,11 @@
 /**
- * Created by h9zhou on 2017/3/21.
+ * Created by h9zhou on 2017/4/12.
  */
-const Router = require('koa-router');
-const { query } = require('../util/async-db');
+const { query } = require('./async-db');
 
-const router = Router();
+const user = {};
 
-/**
- * @api {get} /user/:id Request User information
- * @apiName GetUser
- * @apiGroup User
- *
- * @apiParam {Number} id Users unique ID.
- *
- * @apiSuccess {String} firstname Firstname of the User.
- * @apiSuccess {String} lastname  Lastname of the User.
- */
-router.post('/user/register', async (ctx) => {
+user.signup = async function (ctx) {
 	let username = ctx.request.body.username;
 	let password = ctx.request.body.password;
 	let nick = 'asdasdasd'; // 不设置就随机生成
@@ -35,7 +24,6 @@ router.post('/user/register', async (ctx) => {
 	// 手机号是否正确
 	// 密码是否符合规则
 	ctx.body = res;
-});
+}
 
-// for require auto in index.js
-module.exports = router;
+module.exports = user;
