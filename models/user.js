@@ -1,9 +1,10 @@
 /**
  * Created by h9zhou on 2017/4/12.
  */
-const Sequelize = require('../core/db');
+const Sequelize = require('sequelize');
+const sequelize = require('../core/db');
 
-const User = Sequelize.define('user', {
+const User = sequelize.define('mw_user', {
 	id: {
 		type: Sequelize.INTEGER(8),
 		autoIncrement: true,
@@ -12,26 +13,33 @@ const User = Sequelize.define('user', {
 	},
 	mobile: {
 		type: Sequelize.INTEGER(11),
-		allowNull: false,
 	},
 	email: {
-		type: Sequelize.STRING(50),
-		allowNull: false,
+		type: Sequelize.STRING(40),
 	},
-	nickname: { type: Sequelize.STRING(100), unique: true },
-	avatar: { type: Sequelize.STRING(50) },
-	sexAge: { type: Sequelize.STRING(50) },
-	introduction: { type: Sequelize.STRING(255) },
-	tags: { type: Sequelize.STRING(3000) },
-	hideTag: { type: Sequelize.STRING(50) },
-	deviceId: { type: Sequelize.STRING(32) },
-	accountType: { type: Sequelize.STRING(20), allowNull: false },
-	isClose: { type: Sequelize.BOOLEAN, allowNull: false },
-	createTime: { type: Sequelize.STRING(15), allowNull: false },
-	updateTime: { type: Sequelize.STRING(15), allowNull: false },
+	password: {
+		type: Sequelize.STRING(40),
+	},
+	nickname: {
+		type: Sequelize.STRING(100),
+	},
+	avatar: {
+		type: Sequelize.STRING(250),
+	},
+	sex: {
+		type: Sequelize.INTEGER(1),
+	},
+	signature: {
+		type: Sequelize.STRING(60),
+	},
+	reg_time: {
+		type: Sequelize.INTEGER(11),
+	},
+	login_time: {
+		type: Sequelize.INTEGER(11),
+	},
 }, {
-	freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库同步
-	tableName: 'users',
+	freezeTableName: true,
 	timestamps: false,
 })
 

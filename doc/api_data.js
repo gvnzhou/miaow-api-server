@@ -1,8 +1,8 @@
 define({ "api": [
   {
-    "type": "get",
-    "url": "/user/:id",
-    "title": "Request User information",
+    "type": "post",
+    "url": "/user/register",
+    "title": "Register User",
     "name": "GetUser",
     "group": "User",
     "parameter": {
@@ -10,10 +10,17 @@ define({ "api": [
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Number",
+            "type": "String",
             "optional": false,
-            "field": "id",
-            "description": "<p>Users unique ID.</p>"
+            "field": "mobile",
+            "description": "<p>mobile of the User.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the User.</p>"
           }
         ]
       }
@@ -25,21 +32,21 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "firstname",
-            "description": "<p>Firstname of the User.</p>"
+            "field": "mobile",
+            "description": "<p>mobile of the User.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "lastname",
-            "description": "<p>Lastname of the User.</p>"
+            "field": "password",
+            "description": "<p>password of the User.</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
-    "filename": "routes/user.js",
+    "filename": "controllers/user.js",
     "groupTitle": "User"
   }
 ] });
