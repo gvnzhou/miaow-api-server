@@ -6,7 +6,7 @@ const UserController = require('../controllers/user')
 
 const router = Router();
 
-router.post('/user/register', UserController.signup);
+router.post('/user/register', UserController.register);
 
 // for require auto in index.js
 module.exports = router;
