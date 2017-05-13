@@ -33,10 +33,10 @@ const User = sequelize.define('mw_user', {
 		type: Sequelize.STRING(60),
 	},
 	reg_time: {
-		type: Sequelize.STRING(13),
+		type: Sequelize.INTEGER(13),
 	},
 	login_time: {
-		type: Sequelize.STRING(13),
+		type: Sequelize.INTEGER(13),
 	},
 }, {
 	freezeTableName: true,

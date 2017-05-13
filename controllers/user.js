@@ -20,10 +20,7 @@ const UserController = {};
  */
 UserController.register = async function (ctx) {
 	const regType = ctx.request.body.regType;
-
-	if (regType !== 1 || regType !== 2) {
-		ctx.body = errorMsg.REGISTER_TYPE_ERROR;
-	} else if (regType === 1) {
+	if (+regType === 1) {
 		// 手机注册
 		// todo: 验证验证码
 		// 获取参数
@@ -39,8 +36,6 @@ UserController.register = async function (ctx) {
 		const reg_time = +new Date();
 		const login_time = +new Date();
 
-
-
 		// 手机号是否正确
 		if (!(/^1(3|4|5|7|8)\d{9}$/.test(mobile))) {
 			ctx.body = errorMsg.MOBILE_RULE_ERROR;
@@ -48,11 +43,12 @@ UserController.register = async function (ctx) {
 		}
 
 		// 密码格式是否正确
-		if (password.length > 6) {
+		if (password.length < 6) {
 			ctx.body = errorMsg.PASSWORD_ERROR;
 			return;
 		}
 
+		// 手机号已经存在
 		const res = await model.User
 			.findOrCreate({
 				where: {
@@ -70,9 +66,11 @@ UserController.register = async function (ctx) {
 					login_time,
 				},
 			});
-	} else if (regType === 2) {
+	} else if (+regType === 2) {
 		// 邮箱注册
-	}
+	} else {
+		ctx.body = errorMsg.REGISTER_TYPE_ERROR;
+	} 
 }
 
 UserController.sendVerifyCode = async function (ctx) {}
